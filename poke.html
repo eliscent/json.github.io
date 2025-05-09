@@ -49,6 +49,7 @@
             const pokeName = document.getElementById("pokemonName").value.toLowerCase();
             const name = document.getElementById("pokemonName").value;
 
+            // hakee tiedot 
             fetch(`https://pokeapi.co/api/v2/pokemon/${pokeName}`)
                .then(function (response) {
                   if (!response.ok) {
