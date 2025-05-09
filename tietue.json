@@ -1,0 +1,48 @@
+{
+    "otsikko": "JSON-datan käsittelyä",
+    "kuvaus": "Tällä sivustolle haetaan JSON-muotoista dataa",
+    "kuva": "koodi.png",
+    "opintojakso": {
+        "nimi": "Digitekniikat",
+        "tunnus": "DIG4TA021",
+        "opintopisteet": "5"
+    },
+    "toteutus": {
+        "nimi": "Digitekniikat",
+        "alkamisaika": "2025-01-13",
+        "loppumisaika": "2025-03-14",
+        "kesto_viikkoina": 8,
+        "osallistujien_lukumäärä": 5,
+        "osallistujat": [
+            "Sara Nieminen",
+            "Tomi Korhonen",
+            "Leena Vuori",
+            "Elias Mikkola",
+            "Noora Saarinen"
+        ]
+    },
+    "sisalto": [
+        "low-code",
+        "sisällönhallintajärjestelmät",
+        "resposiivinen käyttöliittymä ja komponentit",
+        "tiedon haku julkisista palveluista rest-rajapinnan yli"
+    ],
+    "tekniikat": [
+        {
+            "aihe": "low-code",
+            "linkki": "https://www.weebly.com/"
+        },
+        {
+            "aihe": "wordpress",
+            "linkki": "https://wordpress.com/"
+        },
+        {
+            "aihe": "bootstrap",
+            "linkki": "https://getbootstrap.com/"
+        },
+        {
+            "aihe": "JSON",
+            "linkki": "https://www.json.org/json-en.html"
+        }
+    ]
+}

@@ -1,1 +1,62 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON-datan käsittelyä</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
+        nav {
+            background-color: #003366;
+            color: white;
+            padding: 10px 20px;
+            position: sticky;
+            top: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 40px;
+        }
+
+        img {
+            max-width: 700px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#otsikko">Etusivu</a>
+        <a href="#opintojakso">Opintojakso</a>
+        <a href="#toteutus">Toteutus</a>
+        <a href="#sisalto">Sisältö</a>
+        <a href="#tekniikat">Tekniikat</a>
+    </nav>
+
+    <main>
+        <!-- tähän scriptin tulokset -->
+        <div id="vastaus"></div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
