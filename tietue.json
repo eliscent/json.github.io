@@ -13,20 +13,9 @@
         "loppumisaika": "2025-03-14",
         "kesto_viikkoina": 8,
         "osallistujien_lukumäärä": 5,
-        "osallistujat": [
-            "Sara Nieminen",
-            "Tomi Korhonen",
-            "Leena Vuori",
-            "Elias Mikkola",
-            "Noora Saarinen"
-        ]
+        "osallistujat": ["Sara Nieminen", "Tomi Korhonen", "Leena Vuori", "Elias Mikkola", "Noora Saarinen"]
     },
-    "sisalto": [
-        "low-code",
-        "sisällönhallintajärjestelmät",
-        "resposiivinen käyttöliittymä ja komponentit",
-        "tiedon haku julkisista palveluista rest-rajapinnan yli"
-    ],
+    "sisalto": ["low-code", "sisällönhallintajärjestelmät", "resposiivinen käyttöliittymä ja komponentit", "tiedon haku julkisista palveluista rest-rajapinnan yli"],
     "tekniikat": [
         {
             "aihe": "low-code",

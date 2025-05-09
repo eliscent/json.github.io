@@ -1,87 +1,77 @@
 <!DOCTYPE html>
 <html lang="fi">
-<head>
-    <meta charset="UTF-8">
-    <title>JSON-datan käsittelyä</title>
-<link rel="stylesheet" href="style.css">
-<!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+   <head>
+      <meta charset="UTF-8" />
+      <title>JSON-datan käsittelyä</title>
+      <link rel="stylesheet" href="style.css" />
+      <!-- Bootstrap CSS -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+   </head>
+   <body>
+      <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+         <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Etusivu</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Valikko">
+               <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+               <ul class="navbar-nav ms-auto">
+                  <li class="nav-item">
+                     <a class="nav-link" href="toteutus.html">Toteutus</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="poke.html">Poke 1</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="poke2.html">Poke 2</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="sää.html">Sää</a>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </nav>
 
-</head>
-<body>
+      <main>
+         <!-- tähän scriptin tulokset -->
+         <div id="vastaus"></div>
+      </main>
 
-<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="index.html">Etusivu</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Valikko">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="toteutus.html">Toteutus</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="poke.html">Poke 1</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="poke2.html">Poke 2</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="sää.html">Sää</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+      <script>
+         // Haetaan JSON-tiedosto
+         fetch("tietue.json")
+            .then(function (response) {
+               return response.json(); // Muutetaan JS-olioksi
+            })
+            .then(function (responseJson) {
+               kerro(responseJson); // Kutsutaan
+            })
+            .catch(function (error) {
+               document.getElementById("vastaus").innerHTML = "<p>Tietoa ei pystytä hakemaan</p>";
+            });
 
-    <main>
-        <!-- tähän scriptin tulokset -->
-        <div id="vastaus"></div>
-    </main>
+         // Näyttää tietueen sisällön
+         function kerro(obj) {
+            let tiedot = "<h1>" + obj.otsikko + "</h1><br>" + obj.kuvaus + "<br><hr>";
 
-    
-<script>
-// Haetaan JSON-tiedosto
-fetch('tietue.json')
-    .then(function(response) {
-        return response.json(); // Muutetaan JS-olioksi
-    })
-    .then(function(responseJson) {
-        kerro(responseJson); // Kutsutaan 
-    })
-    .catch(function(error) {
-        document.getElementById("vastaus").innerHTML = "<p>Tietoa ei pystytä hakemaan</p>";
-    });
+            tiedot += "<p><img src='" + obj.kuva + "' alt='Kuva'></p>";
 
-// Näyttää tietueen sisällön
-function kerro(obj) {
-    let tiedot = "<h1>" + obj.otsikko + "</h1><br>" 
-               + obj.kuvaus + "<br><hr>";
+            tiedot += "<h3>Opintojakso</h3>" + "Nimi: " + obj.opintojakso.nimi + "<br>" + "Tunnus: " + obj.opintojakso.tunnus + "<br>" + "Opintopisteet: " + obj.opintojakso.opintopisteet + "<br><hr>";
 
-    tiedot += "<p><img src='" + obj.kuva + "' alt='Kuva'></p>";
+            // Aiheet + linkit
+            tiedot += "<p><h3> Aiheet </h3>";
+            for (let i = 0; i < obj.tekniikat.length; i++) {
+               tiedot += "<b>Aihe: " + obj.tekniikat[i].aihe + "</b> ";
+               tiedot += "<a href='" + obj.tekniikat[i].linkki + "'>" + obj.tekniikat[i].linkki + "</a><br>";
+            }
+            tiedot += "</p>";
 
-    tiedot += "<h3>Opintojakso</h3>"
-            + "Nimi: " + obj.opintojakso.nimi + "<br>"
-            + "Tunnus: " + obj.opintojakso.tunnus + "<br>"
-            + "Opintopisteet: " + obj.opintojakso.opintopisteet + "<br><hr>";
-
-    // Aiheet + linkit
-    tiedot += "<p><h3> Aiheet </h3>";
-    for (let i = 0; i < obj.tekniikat.length; i++) {
-        tiedot += "<b>Aihe: " + obj.tekniikat[i].aihe + "</b> ";
-        tiedot += "<a href='" + obj.tekniikat[i].linkki + "'>" 
-                + obj.tekniikat[i].linkki + "</a><br>";
-    }
-    tiedot += "</p>";
-
-    // näytetään tiedot sivulla
-    document.getElementById("vastaus").innerHTML = tiedot;
-}
-</script>
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-</body>
+            // näytetään tiedot sivulla
+            document.getElementById("vastaus").innerHTML = tiedot;
+         }
+      </script>
+      <!-- Bootstrap JS -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+   </body>
 </html>
